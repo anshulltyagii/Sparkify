@@ -5,7 +5,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage,} from "
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { useForm } from "react-hook-form"
-import { SignupValidation as SigninValidation } from "@/lib/validation"
+import { SigninValidation } from "@/lib/validation"
 import { z } from "zod"
 import { Loader } from "lucide-react"
 import { Link, useNavigate } from "react-router-dom"
@@ -18,7 +18,7 @@ const SigninForm = () => {
   const navigate = useNavigate();
 
 
-  const {mutateAsync: singInAccount, isPending} = useSignInAccount();
+  const {mutateAsync: singInAccount} = useSignInAccount();
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof SigninValidation>>({
@@ -30,10 +30,10 @@ const SigninForm = () => {
   })
 
 
-
      // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof SigninValidation>) {
-        const session = await singInAccount({
+      
+      const session = await singInAccount({
           email: values.email,
           password: values.password,
         })
@@ -43,6 +43,7 @@ const SigninForm = () => {
         }
 
         const isLoggedIn = await checkAuthUser();
+
         
         if(isLoggedIn){
           form.reset();
