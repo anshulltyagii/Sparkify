@@ -2,7 +2,7 @@ import { ID, ImageGravity, Query } from 'appwrite';
 
 import { INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types";
 import { account, appwriteConfig, avatars, databases, storage } from './config';
-import { error } from 'console';
+
 
 export async function createUserAccount(user: INewUser) {
     try{
@@ -154,7 +154,7 @@ export async function uploadFile(file: File) {
     }
 }
 
-export async function getFilePreview(fileId: string) {
+export  function getFilePreview(fileId: string) {
     try {
         const fileUrl = storage.getFilePreview(
             appwriteConfig.storageId,
