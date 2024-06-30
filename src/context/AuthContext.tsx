@@ -74,8 +74,8 @@ const navigate = useNavigate();
         isLoading,
         isAuthenticated,
         setIsAuthenticated,
-        checkAuthUser
-  }
+        checkAuthUser,
+  };
     return (
     <AuthContext.Provider value ={value}>
         {children}

@@ -55,4 +55,5 @@ export type INavLink = {
     email: string;
     username: string;
     password: string;
+    imageUrl?: string;
   };
