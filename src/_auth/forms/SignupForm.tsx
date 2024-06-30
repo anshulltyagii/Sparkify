@@ -70,7 +70,7 @@ const SignupForm = () => {
     <Form {...form}>
         <div className="sm: w-420 flex-center flex-col">
           <img src="/assets/images/logo.svg" alt="logo"/>
-        
+        <p className="text-light-3 small-medium md:base-regular mt-2">Light Up Your Life with Every Click!</p>
           <h2 className=" h3-bold md:h2-bold pt-5 sm:pt-12">Create a New Account</h2>
           <p className="text-light-3 small-medium md:base-regular mt-2">Enter your details to use SPARKIFY</p>
 
