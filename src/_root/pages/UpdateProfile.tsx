@@ -14,7 +14,6 @@ import {
 import { useToast } from "@/components/ui/use-toast";
 import { Textarea, Input, Button } from "@/components/ui";
 import { ProfileUploader, Loader } from "@/components/shared";
-
 import { ProfileValidation } from "@/lib/validation";
 import { useUserContext } from "@/context/AuthContext";
 import { useGetUserById, useUpdateUser } from "@/lib/react-query/queriesAndMutations";
@@ -41,13 +40,13 @@ const UpdateProfile = () => {
   const { mutateAsync: updateUser, isPending: isLoadingUpdate } =
     useUpdateUser();
 
-  if (!currentUser)
+  if (!currentUser){
     return (
       <div className="flex-center w-full h-full">
         <Loader />
       </div>
     );
-
+  }
   // Handler
   const handleUpdate = async (value: z.infer<typeof ProfileValidation>) => {
     const updatedUser = await updateUser({

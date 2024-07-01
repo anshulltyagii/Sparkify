@@ -289,7 +289,7 @@ export async function updatePost(post: IUpdatePost){
        
         //convert tags into an array
         const tags = post.tags?.replace(/ /g, '').split(',') || [];
-
+        
         //save post to database
         const updatedPost = await databases.updateDocument(
             appwriteConfig.databaseId,
@@ -315,15 +315,19 @@ export async function updatePost(post: IUpdatePost){
     }                             
 }
 
-export async function deletePost(postId: string, imageId: string) {
+export async function deletePost(postId?: string, imageId?: string) {
     if(!postId || !imageId) throw Error;
 
     try {
-        await databases.deleteDocument(
+        const statusCode = await databases.deleteDocument(
             appwriteConfig.databaseId,
             appwriteConfig.postCollectionId,
             postId
-        )
+        );
+
+        if (!statusCode) throw Error;
+
+        await deleteFile(imageId);
 
         return { status: 'ok '}
     } catch (error) {
@@ -358,7 +362,7 @@ export async function searchPosts(searchTerm: string){
        const posts= await databases.listDocuments(
             appwriteConfig.databaseId,
             appwriteConfig.postCollectionId,
-            [Query.search('caption' ,searchTerm)]
+            [Query.search("caption" ,searchTerm)]
         )
 
         if(!posts) throw Error;
@@ -462,7 +466,7 @@ export async function getUserPosts(userId?: string) {
       );
   
       // Failed to update
-      if (!updatedUser) {
+      if (!updateUser) {
         // Delete new file that has been recently uploaded
         if (hasFileToUpdate) {
           await deleteFile(image.imageId);

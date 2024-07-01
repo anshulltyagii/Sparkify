@@ -128,10 +128,10 @@ export const useUpdatePost = () => {
         onSuccess: (data) => {
             queryClient.invalidateQueries({
                 queryKey: [QUERY_KEYS.GET_POST_BY_ID, data?.$id]
-            })
-        }
-    })
-}
+            });
+        },
+    });
+};
 
 export const useDeletePost = () => {
     const queryClient = useQueryClient();
@@ -139,34 +139,34 @@ export const useDeletePost = () => {
         mutationFn: ({ postId, imageId }: { postId: string, imageId: string}) => deletePost(postId, imageId),
         onSuccess: () => {
             queryClient.invalidateQueries({
-                queryKey: [QUERY_KEYS.GET_RECENT_POSTS]
-            })
-        }
-    })
-}
+                queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
+            });
+        },
+    });
+};
 
 export const useGetPosts = () => {
     return useInfiniteQuery({
         queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
         queryFn: getInfinitePosts,
-        initialPageParam: 0,
         getNextPageParam: (lastPage: any) => {
             if (lastPage && lastPage.documents.length === 0) return null; 
 
             const lastId = lastPage.documents[lastPage?.documents.length - 1].$id;
 
             return lastId;
-        }
-    })
-}
+        },
+        initialPageParam: null,
+    });
+};
 
 export const useSearchPosts = (searchTerm: string) => {
     return useQuery({
         queryKey: [QUERY_KEYS.SEARCH_POSTS, searchTerm],
         queryFn: () => searchPosts(searchTerm),
-        enabled: !!searchTerm
-    })
-}
+        enabled: !!searchTerm,
+    });
+};
 
 export const useGetUserPosts = (userId?: string) => {
     return useQuery({
@@ -197,10 +197,10 @@ export const useUpdateUser = () => {
       mutationFn: (user: IUpdateUser) => updateUser(user),
       onSuccess: (data) => {
         queryClient.invalidateQueries({
-          queryKey: [QUERY_KEYS.GET_CURRENT_USER],
+          queryKey: [QUERY_KEYS.GET_USER_BY_ID, data?.$id ],
         });
         queryClient.invalidateQueries({
-          queryKey: [QUERY_KEYS.GET_USER_BY_ID, data?.$id],
+          queryKey: [QUERY_KEYS.GET_CURRENT_USER],
         });
       },
     });

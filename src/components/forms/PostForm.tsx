@@ -13,9 +13,10 @@ import { useToast } from "../ui/use-toast"
 import { useNavigate } from "react-router-dom"
 import { useCreatePost, useUpdatePost } from "@/lib/react-query/queriesAndMutations"
 
+
 type PostFormProps ={
   post?: Models.Document;
-  action: 'Create' | 'Update';
+  action: "Create" | "Update";
 }
 
 const PostForm = ({ post, action }: PostFormProps) => {
@@ -42,18 +43,18 @@ const navigate = useNavigate();
  
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof PostValidation>) {
-    if(post && action === 'Update'){
+    if(post && action === "Update"){
       const updatedPost = await updatePost({
         ...values,
         postId: post.id,
         imageId: post?.imageId,
         imageUrl: post?.imageUrl,
-      })
+      });
 
       if(!updatedPost){
         toast({
-          title: 'Please try again'
-        })
+          title: "Uh oh! Failed to update post. Please try again",
+        });
       }
 
       return navigate(`/posts/${post.$id}`)
