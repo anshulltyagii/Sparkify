@@ -1,6 +1,6 @@
-# Infinet
+# Sparkify
 
-Infinet is a social platform project inspired by twitter. It provides a platform for users to share photos, connect with friends, and explore a visual feed of content.
+Sparkify is a social platform project inspired by twitter. It provides a platform for users to share photos, connect with friends, and explore a visual feed of content.
 ## Table of Contents
 
 - [Features](#features)
@@ -8,7 +8,7 @@ Infinet is a social platform project inspired by twitter. It provides a platform
 - [Usage](#usage)
 - [Contributing](#contributing)
 
-### Here are some of the features of **Infinet** 👇
+### Here are some of the features of **Sparkify** 👇
 
 ⚛️ Tech Stack: React.js, MongoDB, Node.js, Express, Tailwind, Typescript
 
@@ -38,7 +38,7 @@ Infinet is a social platform project inspired by twitter. It provides a platform
 
 ## Installation
 
-To get started with Infinet, follow these steps:
+To get started with Sparkify, follow these steps:
 
 1. Clone the repository
    
@@ -54,13 +54,13 @@ Edit the **.env.local** file in the root directory and add the necessary environ
 ## Features
 
 ### 1. User Authentication
-Infinet implements secure user authentication to ensure a personalized experience for each user.
+Sparkify implements secure user authentication to ensure a personalized experience for each user.
 
 ### 2. Profile Management
 Users can create and manage their profiles, including updating profile pictures, bios, and other information.
 
 ### 3. Photo Sharing
-Infinet allows users to upload and share photos with their followers.
+Sparkify allows users to upload and share photos with their followers.
 
 ### 4. Feed Exploration
 Users can explore a visual feed of content, including posts from their followers and popular content on the platform.
@@ -78,7 +78,7 @@ Users can engage with content by liking photos, and saving posts.
 
 ## Contributing
 
-We welcome contributions to **Infinet**! If you'd like to contribute, please follow these guidelines:
+We welcome contributions to **Sparkify**! If you'd like to contribute, please follow these guidelines:
 
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix.
